@@ -1,0 +1,52 @@
+{
+  "name": "@boddhi9/eventstreamer",
+  "description": "A lightweight and powerful Pub/Sub system for TypeScript applications, designed for elegant event streaming and reactive data flows.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Krum Georgiev",
+    "email": "krum.georgiev@icloud.com",
+    "url": "https://krumgeorgiev.com"
+  },
+  "homepage": "https://github.com/boddhi9/eventstreamer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boddhi9/eventstreamer.git"
+  },
+  "source": "src/eventstreamer.ts",
+  "types": "dist/eventstreamer.d.ts",
+  "main": "dist/eventstreamer.js",
+  "module": "dist/eventstreamer.module.js",
+  "umd:main": "dist/eventstreamer.umd.js",
+  "unpkg": "dist/eventstreamer.umd.js",
+  "devDependencies": {
+    "@eslint/js": "^9.14.0",
+    "@types/jest": "^29.0.0",
+    "eslint": "^9.14.0",
+    "globals": "^15.12.0",
+    "jest": "^29.4.1",
+    "microbundle": "^0.15.1",
+    "prettier": "^2.8.8",
+    "release-please": "^16.15.0",
+    "tslib": "^2.8.1",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.2.2",
+    "typescript-eslint": "^8.14.0"
+  },
+  "resolutions": {
+    "typescript": "5.2.2"
+  },
+  "scripts": {
+    "clean": "rm -rf build dist",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "test": "jest",
+    "release:please": "release-please release-pr --token=$GITHUB_TOKEN",
+    "release:local": "release-please release-pr --release-type=node --token=$GITHUB_TOKEN",
+    "build": "microbundle --name eventstreamer --sourcemap false --no-compress",
+    "dev": "microbundle watch",
+    "prepublishOnly": "npm run clean && npm run lint && npm run test && npm run build",
+    "publish": "npm publish --access public"
+  }
+}
